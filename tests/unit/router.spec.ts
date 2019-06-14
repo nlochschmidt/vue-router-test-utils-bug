@@ -12,4 +12,15 @@ describe("router", () => {
     expect(wrapper.find(Home).exists()).toBe(true)
     expect(wrapper.find(HelloWorld).exists()).toBe(false)
   })
+
+  test("attempt with simple stateless component /", () => {
+    const localVue = createLocalVue()
+    const router = createRouter(localVue)
+    const wrapper = mount({
+      render: h => h('router-view')
+    },
+    { localVue, router, stubs: { Home }})
+    expect(wrapper.find(Home).exists()).toBe(true)
+    expect(wrapper.find(HelloWorld).exists()).toBe(false)
+  })
 })
